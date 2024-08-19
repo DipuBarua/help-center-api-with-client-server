@@ -31,6 +31,14 @@ async function run() {
         await client.connect();
 
 
+        const cardCollection = client.db('helpCenterDB').collection("cards");
+
+
+        //cards--api
+        app.get('/cards', async (req, res) => {
+            const cards = await cardCollection.find().toArray();
+            res.send(cards);
+        })
 
 
 
